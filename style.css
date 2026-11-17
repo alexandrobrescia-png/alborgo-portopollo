@@ -193,7 +193,7 @@ footer .social a:hover{background:var(--terra);border-color:var(--terra);color:#
 footer .social+.copy{margin-top:1.5rem;border-top:0;padding-top:0}
 footer .copy{border-top:1px solid #555;margin-top:2rem;padding-top:1.25rem;text-align:center;font-size:.78rem}
 
-.wa{position:fixed;left:16px;bottom:16px;z-index:35;background:#0f7a3d;color:#fff;text-decoration:none;
+.wa{position:fixed;right:16px;bottom:16px;z-index:35;background:#0f7a3d;color:#fff;text-decoration:none;
   padding:.75rem 1.15rem;border-radius:999px;font-weight:600;font-size:.92rem;letter-spacing:.03em;box-shadow:0 3px 14px rgba(0,0,0,.28)}
 
 @media(min-width:600px){
