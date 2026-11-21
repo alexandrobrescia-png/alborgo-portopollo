@@ -120,19 +120,4 @@
 <xhtml:link rel="alternate" hreflang="en" href="https://alborgo-portopollo.it/en/privacy.html"/>
 <xhtml:link rel="alternate" hreflang="de" href="https://alborgo-portopollo.it/de/privacy.html"/>
 </url>
-<url><loc>https://alborgo-portopollo.it/tariffe.html</loc>
-<xhtml:link rel="alternate" hreflang="it" href="https://alborgo-portopollo.it/tariffe.html"/>
-<xhtml:link rel="alternate" hreflang="en" href="https://alborgo-portopollo.it/en/tariffe.html"/>
-<xhtml:link rel="alternate" hreflang="de" href="https://alborgo-portopollo.it/de/tariffe.html"/>
-</url>
-<url><loc>https://alborgo-portopollo.it/en/tariffe.html</loc>
-<xhtml:link rel="alternate" hreflang="it" href="https://alborgo-portopollo.it/tariffe.html"/>
-<xhtml:link rel="alternate" hreflang="en" href="https://alborgo-portopollo.it/en/tariffe.html"/>
-<xhtml:link rel="alternate" hreflang="de" href="https://alborgo-portopollo.it/de/tariffe.html"/>
-</url>
-<url><loc>https://alborgo-portopollo.it/de/tariffe.html</loc>
-<xhtml:link rel="alternate" hreflang="it" href="https://alborgo-portopollo.it/tariffe.html"/>
-<xhtml:link rel="alternate" hreflang="en" href="https://alborgo-portopollo.it/en/tariffe.html"/>
-<xhtml:link rel="alternate" hreflang="de" href="https://alborgo-portopollo.it/de/tariffe.html"/>
-</url>
 </urlset>
