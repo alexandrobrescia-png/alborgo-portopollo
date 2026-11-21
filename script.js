@@ -45,7 +45,7 @@
 
     // availability from Airbnb (Google Apps Script) + date rules + calendar
     var ENDPOINT='https://script.google.com/macros/s/AKfycbyrUtvbbuTjpbzKO3g7m402aebr0L64TnUX57ZJYMlzc3DJdVPxuWiy3ckWVd0N6fQ-cA/exec';
-    var ia=$('#arrivo'),ip=$('#partenza'),av=$('#avviso'),D=f.dataset,DAY=864e5,busy=null;
+    var ia=$('#arrivo'),ip=$('#partenza'),av=$('#avviso'),D=f.dataset,DAY=864e5,busy=null,extra={},hasEx=false;
     function pd(v){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||'');return m?Date.UTC(+m[1],+m[2]-1,+m[3]):null}
     function iso(ms){return new Date(ms).toISOString().slice(0,10)}
     function today(){var n=new Date();return Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())}
@@ -56,9 +56,9 @@
     function need(a){var mo=new Date(a).getUTCMonth();return(mo===6||mo===7)?6:3}
     function minNights(a){return need(a)}
     function nightBusy(ms){
-      if(!busy)return false;
+      if(!busy&&!hasEx)return false;
       var k=['lory','ale','alcova'],i=sel.selectedIndex;
-      function inH(h){var r=busy[h]||[];for(var x=0;x<r.length;x++){if(ms>=r[x][0]&&ms<r[x][1])return true}return false}
+      function inH(h){var r=((busy&&busy[h])||[]).concat(extra[h]||[]);for(var x=0;x<r.length;x++){if(ms>=r[x][0]&&ms<r[x][1])return true}return false}
       if(i<3)return inH(k[i]);
       return inH('lory')&&inH('ale')&&inH('alcova');
     }
@@ -170,6 +170,15 @@
         busy={};Object.keys(j.case).forEach(function(k){busy[k]=j.case[k].map(function(x){return[pd(x[0]),pd(x[1])]}).filter(function(x){return x[0]!==null&&x[1]!==null})});
         refresh();if(!box.hidden)render();
       }).catch(function(){});
+      // direct bookings (not on Airbnb) from the owner's booking sheet
+      var DIRECT='https://script.google.com/macros/s/AKfycbxsXaaN9TAKtMxvWpkKD5whi_rbqolyP3TzjALGP-DCMLwc2zrGMU2sqeTwev6-0Q2k2g/exec';
+      ['lory','ale','alcova'].forEach(function(h){
+        fetch(DIRECT+'?casa='+h+'&format=json').then(function(r){return r.json()}).then(function(j){
+          var r=j&&j[h];if(!r||!r.length)return;
+          extra[h]=r.filter(function(x){return typeof x[0]==='number'&&typeof x[1]==='number'});hasEx=true;
+          refresh();if(!box.hidden)render();
+        }).catch(function(){});
+      });
     }
 
     // WhatsApp with form content
