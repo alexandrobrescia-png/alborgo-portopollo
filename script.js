@@ -18,6 +18,21 @@
   // year
   var y=$('#anno');if(y)y.textContent=new Date().getFullYear();
 
+
+  // month chips with indicative prices (home cards)
+  $$('.pm').forEach(function(b){
+    var N=b.dataset.n.split(','),W=b.dataset.w.split(','),M=b.dataset.mn.split(',');
+    function fm(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
+    function set(i){
+      $$('.chip',b).forEach(function(c){var on=+c.dataset.i===i;c.classList.toggle('on',on);c.setAttribute('aria-pressed',on)});
+      $('.pn',b).textContent='€'+fm(N[i]);
+      $('.w',b).textContent=b.dataset.wk.replace('{w}',fm(W[i]));
+      var a=$('.btn',b);a.textContent=b.dataset.btn.replace('{m}',M[i]);
+      a.href='contatti.html?casa='+b.dataset.h+'&mese='+(i+4);
+    }
+    $$('.chip',b).forEach(function(c){c.addEventListener('click',function(){set(+c.dataset.i)})});
+  });
+
   // preselect house from ?casa=
   var f=$('#modulo');
   var wa=$('.wa');if(wa&&f)wa.hidden=true; // in Contatti il modulo ha già il suo pulsante WhatsApp
@@ -25,6 +40,8 @@
     var m=(location.search.match(/casa=(\w+)/)||[])[1];
     var sel=$('#casa');
     if(m&&sel){var i=['lory','ale','alcova'].indexOf(m);if(i>-1)sel.selectedIndex=i}
+    var mq=+((location.search.match(/mese=(\d+)/)||[])[1]||0),startM=null;
+    if(mq>=1&&mq<=12){var tn=new Date(),yy=tn.getFullYear();if(mq-1<tn.getMonth())yy++;startM=Date.UTC(yy,mq-1,1)}
 
     // availability from Airbnb (Google Apps Script) + date rules + calendar
     var ENDPOINT='https://script.google.com/macros/s/AKfycbyrUtvbbuTjpbzKO3g7m402aebr0L64TnUX57ZJYMlzc3DJdVPxuWiy3ckWVd0N6fQ-cA/exec';
@@ -110,7 +127,7 @@
         box.innerHTML=h;
       }
       function open(){
-        var a=gv(ia);first=monthStart(a!==null?a:today());
+        var a=gv(ia);first=monthStart(a!==null?a:(startM!==null?startM:today()));
         if(first<monthStart(today()))first=monthStart(today());
         render();box.hidden=false;
         ia.classList.toggle('on',phase()==='arr');ip.classList.toggle('on',phase()==='dep');

@@ -301,3 +301,35 @@ input[readonly]#arrivo,input[readonly]#partenza{cursor:pointer;background:#fff u
 .cal .leg s{margin-right:.3rem}
 .cal .lnk{background:none;border:0;font:inherit;font-weight:500;color:var(--terra);text-decoration:underline;cursor:pointer;padding:.35rem .5rem}
 @media(max-width:719px){.cal{padding:1.25rem .6rem .8rem}.cal h5{font-size:1.1rem}}
+
+/* --- prezzi indicativi --- */
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0 0}
+.chips p{width:100%;margin:0 0 .15rem;color:var(--muted);font-size:.85rem}
+.chip{font:600 .75rem var(--font);letter-spacing:.08em;text-transform:uppercase;padding:.5rem .75rem;min-height:36px;border:1.5px solid var(--sand);background:#fff;color:var(--text);cursor:pointer;border-radius:999px}
+.chip.on{background:var(--terra);border-color:var(--terra);color:#fff}
+.pm{margin-top:1rem;padding-top:.5rem;border-top:1px solid var(--sand)}
+.pm .btn{display:block;text-align:center;margin-top:.5rem}
+.mp{margin:.75rem 0 .5rem}
+.mp .l{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-ink);font-weight:600}
+.mp b{font-family:var(--display);font-size:2rem;color:var(--terra);font-weight:700;line-height:1.1}
+.mp b small{font-family:var(--font);font-size:.85rem;font-weight:500;color:var(--muted);letter-spacing:.04em}
+.mp .w{color:var(--muted);font-size:.9rem}
+.pbars{max-width:760px;margin:2rem auto 0}
+.bars{display:flex;gap:6px;align-items:flex-end;height:150px}
+.bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:.78rem;color:var(--muted)}
+.bars i{display:block;width:100%;background:var(--tan);border-radius:2px 2px 0 0;margin-top:.25rem}
+.bars .hi i{background:var(--terra)}
+.bars .hi{color:var(--terra);font-weight:700}
+.bl{display:flex;gap:6px;font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem}
+.bl span{flex:1;text-align:center}
+.pbars .btn{display:table;margin:1.5rem auto 0}
+.tar{width:100%;border-collapse:collapse;background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.07);margin:2rem 0 1rem;font-size:1rem}
+.tar th{font-family:var(--font);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-ink);font-weight:600;text-align:left;padding:1rem;border-bottom:2px solid var(--terra)}
+.tar td{padding:.8rem 1rem;border-bottom:1px solid var(--sand)}
+.tar tr:last-child td{border-bottom:0}
+.tar td b{font-weight:600;font-size:1.1rem}
+.tar td small{display:block;color:var(--muted);font-size:.8rem;line-height:1.3}
+.tar tbody tr:nth-child(even){background:var(--sand2)}
+.tnote{font-size:.9rem;color:var(--muted);max-width:640px;margin:.4rem auto;text-align:center}
+.tarw{overflow-x:auto}
+@media(max-width:560px){.tar th,.tar td{padding:.65rem .5rem}.tar td b{font-size:1rem}.tar th{font-size:.68rem}}
